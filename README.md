@@ -80,6 +80,29 @@ case ... in
         ;;
 esac
 ```
-######
 
 ##### 循环控制
+######while
+```
+while ...;do
+    ...
+done
+```
+####函数
+* 函数必须先声明后调用
+###### 函数的声明与调用
+```
+argsList=$@
+# 声明函数
+function getArgsList(){
+    echo $argsList
+}
+
+# 调用函数
+getArgsList;
+```
+####调试
+```
+sh -x test.sh #执行脚本并显示所有变量的值
+sh -n test.sh #返回所有的语法错误
+```
