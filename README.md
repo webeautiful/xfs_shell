@@ -33,7 +33,7 @@ $ echo "${a}bc"
 hello worldbc
 ```
 ##### 数字数组
-```
+```sh
 # 索引数组
 B=(a.html a.php)
 
@@ -42,7 +42,7 @@ for((i=0;i<${#B[@]};i++));do
 done;
 ```
 ##### 关联数组
-```
+```sh
 # 声明一个关联数组(必须)
 declare -A arr
 
@@ -56,7 +56,7 @@ done
 #### 流程控制
 ##### 条件控制
 ######if
-```
+```sh
 if [...];then
 ...
 elif [...];then
@@ -101,7 +101,7 @@ if条件的四种写法:
     - `-d file` 文件是否存在且是一个目录
 
 ######case
-```
+```sh
 case ... in
     ...)
         ...
@@ -121,7 +121,7 @@ esac
 
 ##### 循环控制
 ######while
-```
+```sh
 while 条件;do
     ...
 done
@@ -136,8 +136,9 @@ done
 
 ####函数
 * 函数必须先声明后调用
+
 ##### 函数的声明与调用
-```
+```sh
 argsList=$@
 # 声明函数
 function getArgsList(){
@@ -147,8 +148,25 @@ function getArgsList(){
 # 调用函数
 getArgsList;
 ```
+####正则匹配
+
+```sh
+#! /bin/sh
+fullpath=/opt/ejabberd/bin/test.md
+
+# 正则匹配
+echo ${fullpath#*/} #opt/ejabberd/bin/test.md
+echo ${fullpath##*/} #test.md
+echo ${fullpath%/*} #/opt/ejabberd/bin
+echo ${fullpath%%.*} #/opt/ejabberd/bin/test
+```
+
+* `#`从左往右匹配，保留右边
+* `%`从右往左匹配，保留左边
+* 单一符号是最小匹配﹔两个符号是最大匹配
+
 ####调试
 ```
-sh -x test.sh #执行脚本并显示所有变量的值
-sh -n test.sh #返回所有的语法错误
+$ sh -x test.sh #执行脚本并显示所有变量的值
+$ sh -n test.sh #返回所有的语法错误
 ```
