@@ -148,7 +148,7 @@ function getArgsList(){
 # 调用函数
 getArgsList;
 ```
-####正则匹配
+####变量替换${}
 
 ```sh
 #! /bin/sh
@@ -163,6 +163,7 @@ echo ${fullpath%%.*} #/opt/ejabberd/bin/test
 
 * `#`从左往右匹配，保留右边
 * `%`从右往左匹配，保留左边
+* `*`表示要删除的内容
 * 单一符号是最小匹配﹔两个符号是最大匹配
 
 ####调试
