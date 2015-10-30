@@ -1,0 +1,107 @@
+ulimit -SHn 51200
+nginx_path="/usr/local/nginx"
+nginx_pid="/usr/local/nginx/logs/nginx.pid"
+ 
+# Source function library.
+. /etc/rc.d/init.d/functions
+ 
+# Source networking configuration.
+. /etc/sysconfig/network
+ 
+# Check that networking is up.
+[ ${NETWORKING} = "no" ] && exit 0
+ 
+[ -x $nginx_path/sbin/nginx ] || exit 0
+ 
+RETVAL=0
+prog="nginx"
+ 
+start() {
+# Start daemons.
+#/opt/modules/php/sbin/php-fpm start
+if [ -e $nginx_pid -a ! -z $nginx_pid ];then
+echo "nginx already running...."
+exit 1
+fi
+ 
+ 
+if [ -e $nginx_path/conf/nginx.conf ];then
+  echo -n $"Starting $prog: "
+  $nginx_path/sbin/nginx -c $nginx_path/conf/nginx.conf &
+  RETVAL=$?
+[ $RETVAL -eq 0 ] && {
+touch /var/lock/subsys/$prog
+success $"$prog"
+}
+echo
+else
+RETVAL=1
+fi
+return $RETVAL
+}
+ 
+# Stop daemons.
+stop() {
+#/opt/modules/php/sbin/php-fpm stop
+        echo -n $"Stopping $prog: "
+        killproc -d 10 $nigx_path/sbin/nginx
+        RETVAL=$?
+        echo
+        [ $RETVAL = 0 ] && rm -f $nginx_pid /var/lock/subsys/$prog
+}
+restart() {
+# Start daemons.
+echo -n $"Stopping $prog: "
+killproc -d 10 $nigx_path/sbin/nginx
+RETVAL=$?
+echo
+[ $RETVAL = 0 ] && rm -f $nginx_pid /var/lock/subsys/$prog
+if [ -e $nginx_pid -a ! -z $nginx_pid ];then
+echo "nginx already running...."
+exit 1
+fi
+if [ -e $nginx_path/conf/nginx.conf ];then
+  echo -n $"Starting $prog: "
+  $nginx_path/sbin/nginx -c $nginx_path/conf/nginx.conf &
+  RETVAL=$?
+[ $RETVAL -eq 0 ] && {
+touch /var/lock/subsys/$prog
+success $"$prog"
+}
+echo
+else
+RETVAL=1
+fi
+return $RETVAL
+}
+ 
+# See how we were called.
+case "$1" in
+start)
+        start
+        ;;
+ 
+stop)
+        stop
+        ;;
+restart)
+        restart
+        ;;
+ 
+reconfigure)
+        stop
+        start
+        ;;
+ 
+status)
+        status $prog
+        RETVAL=$?
+        ;;
+ 
+*)
+        echo $"Usage: $0 {start|stop|reconfigure|status}"
+	exit 1
+esac
+ 
+exit $RETVAL
+

@@ -10,8 +10,11 @@
 # 声明一个关联数组
 declare -A arr
 
-arr=(['/sdb/user_cikuu/xiongfs/.vimrc']='/sdb/user_cikuu/xiongfs/git/xfs_shell/_vimrc'
-    ['/sdb/user_cikuu/xiongfs/.gitconfig']='/sdb/user_cikuu/xiongfs/git/xfs_shell/_gitconfig')
+arr=(['/sdb/user_cikuu/xiongfs/.vimrc']='/sdb/user_cikuu/xiongfs/git/xiongfs/conf/_vimrc'
+    ['/sdb/user_cikuu/xiongfs/.gitconfig']='/sdb/user_cikuu/xiongfs/git/xiongfs/conf/_gitconfig'
+    ['/etc/init.d/nginx']='/sdb/user_cikuu/xiongfs/git/xfs_shell/example/nginx'
+    ['/sdb/user_cikuu/xiongfs/.bashrc']='/sdb/user_cikuu/xiongfs/git/xiongfs/conf/_bashrc'
+    )
 
 #遍历数组
 for k in "${!arr[@]}";do
