@@ -37,7 +37,8 @@ hello worldbc
 # 索引数组
 B=(a.html a.php)
 
-for((i=0;i<${#B[@]};i++));do
+len=${#B[@]}
+for((i=0;i<$len;i++));do
     echo ${B[$i]}
 done;
 ```
@@ -49,7 +50,8 @@ declare -A arr
 arr=([name]=xfs [sex]=男)
 
 #遍历数组
-for k in ${!arr[@]};do
+keys=${!arr[@]}
+for k in $keys;do
     echo $k = ${arr[$k]}
 done
 ```

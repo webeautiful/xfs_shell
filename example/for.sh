@@ -3,6 +3,7 @@
 # 索引数组
 B=(a.html a.php)
 
-for((i=0;i<${#B[@]};i++));do
+len=${#B[@]}
+for((i=0;i<$len;i++));do
     echo ${B[$i]}
 done;
