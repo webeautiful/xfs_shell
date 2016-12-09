@@ -13,7 +13,7 @@ BEGIN {
 }
 #运行中
 {
-    if(NR==1) {
+    if($1 && !startDate) {
         startDate  = $1" "$2
         gsub(/^\[|\]$/, "" ,startDate)
     }
