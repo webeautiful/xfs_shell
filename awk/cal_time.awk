@@ -14,18 +14,23 @@ BEGIN {
 #运行中
 {
     if($1 && !startDate) {
-        startDate  = $1" "$2
-        gsub(/^\[|\]$/, "" ,startDate)
+        startDate = parseTime($1, $2)
     }
 }
 #运行后
 END {
-    endDate  = $1" "$2
-    gsub(/^\[|\]$/, "" ,endDate)
+    endDate = parseTime($1, $2)
 
-    delta =  (strtotime(endDate)-strtotime(startDate))
+    delta =  (endDate-startDate)
     printf "TOTLAL:%s\n",int(delta/60)"."delta%60"min"
     printf "--------------------------------------------------\n"
+}
+
+
+function parseTime(date, time) {
+    dt = date" "time
+    gsub(/^\[|\]$/, "" ,dt)
+    return strtotime(dt)
 }
 
 #如:strtotime("2016-12-09 10:04:09")
