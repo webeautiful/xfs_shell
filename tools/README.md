@@ -9,3 +9,5 @@
 `php_ext_install.sh` - php模块安装脚本
 
 `php-fpm` - php-fpm管理shell
+
+`backup.sh` - 数据库备份
