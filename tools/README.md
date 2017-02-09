@@ -11,3 +11,5 @@
 `php-fpm` - php-fpm管理shell
 
 `backup.sh` - 数据库备份
+
+`check-ping.sh` - 检测内网ip是否存活
