@@ -127,5 +127,6 @@ $ echo '2017-5-19 16:06:40' | awk 'gsub(/-/, "/", $0)'
 ### 参考资料
 - [AWK简明教程](http://coolshell.cn/articles/9070.html)
 - [AWK命令学习系列](http://www.cnblogs.com/chengmo/archive/2013/01/17/2865479.html)
+- [Linux之awk详解](http://www.jianshu.com/p/ea22c809ae9f)
 
 ---
