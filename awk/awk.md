@@ -114,8 +114,12 @@ a-:-b 1
 |--------|--------|----|
 |sub(regular_expression,substitution_str[,target_str])|匹配目标字符串中第一个符合正则规则的字符串,然后用替换字符串代替|sub(/test/,"mytest")|
 |gsub(r,s)|整行全局匹配，在整行$0中用s替代r|gsub(/test/,"mytest")|
-|gsub(reg, s, t)|全局匹配, 将t与reg进行正则匹配，并替换成s, 更新目标字符串t|
+|gsub(reg/str, replacement, target)|全局匹配, 将t与reg进行正则匹配，并替换成s, 更新目标字符串t|
 |split(s,a,fs)|用分隔符fs,将字符串s分成序列a|
+```
+$ echo '2017-5-19 16:06:40' | awk 'gsub(/-/, "/", $0)'
+2017/5/19 16:06:40
+```
 
 ## awk数组和遍历
 注:用awk执行循环的效率比shell高很多
