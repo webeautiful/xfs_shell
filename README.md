@@ -145,7 +145,7 @@ done
 * 函数必须先声明后调用
 * $@ 获取传入函数的参数列表
 * $1~$9 用于获取传入参数，分别用于获取第1到第9个参数
-* $? 获取函数执行后return的结果
+* $? 获取函数执行后return的结果, return的返回值只能是整形数值, 否则会报错
 
 ##### 函数的声明与调用
 ```sh
@@ -158,6 +158,19 @@ function getArgsList(){
 # 调用函数
 getArgsList;
 ```
+##### 把函数作为子程序调用，将其结果写到子程序的标准输出
+```sh
+#!/bin/bash
+function addSlash() {
+    echo `echo $1 | sed 's#\/#\\\/#g'`
+}
+
+today=$(LANG=en_US.utf8 date +%d/%b/%Y)
+
+today=$(addSlash $today)
+echo $today
+```
+
 #### 变量替换${}
 
 ```sh
