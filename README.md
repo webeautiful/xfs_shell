@@ -141,6 +141,30 @@ do
 done
 ```
 
+```
+# 数字性循环
+#for((i=0;i<10;i++))
+#for i in $(seq 0 9)
+for i in {0..9}
+do
+    echo $(expr $i \* 3 + 1)
+done
+```
+
+```
+# 字符性循环
+list='file1 file2 file3' #list=`ls`
+for v in $list
+do
+    echo $v
+done
+```
+
+###### awk循环
+```
+awk 'BEGIN{for(i=0; i<10; i++) print i}'
+```
+
 #### 函数
 * 函数必须先声明后调用
 * $@ 获取传入函数的参数列表
