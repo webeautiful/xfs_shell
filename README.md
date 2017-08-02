@@ -134,14 +134,14 @@ while 条件;do
 done
 ```
 ###### for循环
-```
+```sh
 for 变量名 in 取值列表
 do
     命令序列
 done
 ```
 
-```
+```sh
 # 数字性循环
 #for((i=0;i<10;i++))
 #for i in $(seq 0 9)
@@ -151,9 +151,10 @@ do
 done
 ```
 
-```
+```sh
 # 字符性循环
-list='file1 file2 file3' #list=`ls`
+
+list='file1 file2 file3' # list=`ls`
 for v in $list
 do
     echo $v
@@ -161,7 +162,7 @@ done
 ```
 
 ###### awk循环
-```
+```sh
 awk 'BEGIN{for(i=0; i<10; i++) print i}'
 ```
 
