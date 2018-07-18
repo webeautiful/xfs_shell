@@ -219,3 +219,8 @@ echo ${fullpath%%.*} #/opt/ejabberd/bin/test
 $ sh -x test.sh #执行脚本并显示所有变量的值
 $ sh -n test.sh #返回所有的语法错误
 ```
+
+#### 中断程序执行
+```
+exit 0
+```
