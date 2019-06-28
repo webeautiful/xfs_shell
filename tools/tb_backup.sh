@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# 用于备份
+# 用于备份多个表
 #
 backupdir=/home/backup
 mysqldump=/usr/local/mysql55/bin/mysqldump
