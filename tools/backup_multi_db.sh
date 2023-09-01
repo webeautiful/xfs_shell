@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# 用于备份
+# 同时备份多个数据库
 #
 backupdir=/data/backup
 mysqldump=/usr/bin/mysqldump

@@ -1,12 +1,13 @@
 #!/bin/sh
 #
-# 用于备份多个表
+# 同时备份多张表
 #
-backupdir=/home/backup
-mysqldump=/usr/local/mysql55/bin/mysqldump
-user=userxxx
-pwd=pwdxxx
-db=db_name
+backupdir=/root/sql/migrate
+mysqldump=/usr/bin/mysqldump
+db_host=localhost
+db_user=root
+db_pwd=xxxx
+db_name=trade_log
 time=$(date "+%Y-%m-%d")
 
 backupdir=$backupdir/$time
@@ -18,5 +19,5 @@ tabs=(table1 table2
 for((i=0;i<${#tabs[@]};i++));do
     tab=${tabs[$i]}
     #echo ${backupdir}/${tab}-${time}.sql
-    $mysqldump -u $user -p$pwd $db $tab > ${backupdir}/${tab}.sql
+    $mysqldump -h${db_host} -u${db_user} -p${db_pwd} ${db_name} $tab > ${backupdir}/${tab}.sql
 done;
