@@ -3,10 +3,10 @@
 # command: ./deploy.sh v1 5001 https://rust-1251942975.cos.na-siliconvalley.myqcloud.com/rust-ssr-20231026095240.tar.gz
 
 # ------ Config -----
-WORK_DIR='/root/project-deploy'
+WORK_DIR='/root/xxx-deploy'
 
 # 1. Fetch url
-# https://dev-pc.abc.com/deploy?type=v1&url=https://rust-1251942975.cos.na-siliconvalley.myqcloud.com/rust-ssr-20231026095240.tar.gz
+# https://dev-pc.xxx.cc/deploy?v=v1&url=https://rust-1251942975.cos.na-siliconvalley.myqcloud.com/rust-ssr-20231026095240.tar.gz
 v=$1
 port=$2
 download_url=$3
@@ -29,7 +29,7 @@ grep '^module.exports = {' ecosystem.config.js >/dev/null 2>&1 || cat >> ecosyst
 module.exports = {
   apps: [
     {
-      name: 'Project-$v',
+      name: 'xxx-$v',
       port: '$port',
       exec_mode: 'cluster',
       instances: '3',
@@ -47,7 +47,7 @@ pm2 save
 
 # 4. lark robot
 # 定义目标URL
-url="https://open.larksuite.com/open-apis/bot/v2/hook/245d7cda-3ed4-4915-847a-748a83acb737"
+url="https://open.larksuite.com/open-apis/bot/v2/hook/245d7cda-4915-3ed4-847a-748a83acb737"
 
 # 定义要发送的数据，使用 -d 参数
 # 多行 JSON 字符串中包含变量
@@ -59,7 +59,7 @@ data=$(cat <<EOF
 			{
 				"tag": "div",
 				"text": {
-					"content": "部署成功,访问链接: http://$v.dev-pc.abc.com",
+					"content": "部署成功,访问链接: http://$v.dev-pc.xxx.cc",
 					"tag": "plain_text"
 				}
 			},
@@ -73,7 +73,7 @@ data=$(cat <<EOF
 						},
 						"type": "primary",
 						"multi_url": {
-							"url": "https://github.com/project-code/abc-pc/actions",
+							"url": "https://github.com/xiaoji-code/rust-pc/actions",
 							"pc_url": "",
 							"android_url": "",
 							"ios_url": ""
@@ -87,7 +87,7 @@ data=$(cat <<EOF
 						},
 						"type": "default",
 						"multi_url": {
-							"url": "https://github.com/project-code/abc-pc",
+							"url": "https://github.com/xiaoji-code/rust-pc",
 							"pc_url": "",
 							"android_url": "",
 							"ios_url": ""
@@ -99,7 +99,7 @@ data=$(cat <<EOF
 		"header": {
 			"template": "blue",
 			"title": {
-				"content": "【测试】Project-$v 部署成功",
+				"content": "【测试】xxx-$v 部署成功",
 				"tag": "plain_text"
 			}
 		}
